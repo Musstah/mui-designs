@@ -13,7 +13,7 @@ function App() {
           <Route path="/" element={<div>Home</div>} />
           <Route path="/services" element={<div>Services</div>} />
           <Route path="/customsoftware" element={<div>Customsoftware</div>} />
-          <Route path="/mobileappst" element={<div>Mobileappst</div>} />
+          <Route path="/mobileapps" element={<div>Mobileapps</div>} />
           <Route path="/websites" element={<div>Websites</div>} />
           <Route path="/revolution" element={<div>Revolution</div>} />
           <Route path="/about" element={<div>About</div>} />

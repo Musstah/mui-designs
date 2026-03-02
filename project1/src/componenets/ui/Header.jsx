@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment, useState, useEffect } from "react";
 import { Link } from 'react-router-dom'
 
+
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from '@mui/material/Box';
@@ -9,12 +10,24 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Button from "@mui/material/Button";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 
 
 import logo from '../../assets/logo.svg'
 
 
+const menuItemStyles = (theme) => ({
+  "&.MuiMenuItem-root":
+  {
+    ...theme.typography.tab,
+    opacity: 0.7,
+    "&:hover": {
+      opacity: 1
+    }
 
+  }
+});
 
 
 function ElevationScroll(props) {
@@ -39,10 +52,37 @@ function ElevationScroll(props) {
 export default function Header(props) {
 
   const [value, setValue] = useState(0);
+  const [anchorEl, setAnchorEl] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget)
+    setOpen(true)
+  }
+
+  const handleMenuItemClick = (e, i) => {
+    setAnchorEl(null)
+    setOpen(false)
+    setSelectedIndex(i)
+  }
+
+  const handleClose = (e) => {
+    setAnchorEl(null)
+    setOpen(false)
+  }
+
+  const menuOptions = [
+    { name: "Services", link: "/services" },
+    { name: "Custom Software Development", link: "/customsoftware" },
+    { name: "Mobile app Development", link: "/mobileapps" },
+    { name: "Website Development", link: "/websites" },
+
+  ]
 
   useEffect(() => {
     if (window.location.pathname === "/" && value !== 0) {
@@ -108,14 +148,18 @@ export default function Header(props) {
                 to="/"
                 label="Home" />
 
-              <Tab sx={[
-                (theme) => ({
-                  ...theme.typography.tab,
-                  mindWidth: 10,
-                  marginLeft: "25px",
-                })
-              ]}
+              <Tab
+                aria-owns={anchorEl ? "simple-menu" : undefined}
+                aria-haspopup={anchorEl ? "true" : undefined}
+                sx={[
+                  (theme) => ({
+                    ...theme.typography.tab,
+                    mindWidth: 10,
+                    marginLeft: "25px",
+                  })
+                ]}
                 component={Link}
+                onMouseOver={(event) => handleClick(event)}
                 to="/services"
                 label="Services" />
 
@@ -163,6 +207,40 @@ export default function Header(props) {
             >
               Free Estimate
             </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              // MenuListProps is deprecated
+              // MenuListProps={{ onMouseLeave: handleClose }}
+              slotProps={{
+                list: {
+                  onMouseLeave: handleClose,
+                  sx: (theme) => ({
+                    bgcolor: theme.palette.primary.main,
+                    color: "white",
+                    borderRadius: "0px",
+                  })
+                },
+              }}
+              elevation={0}
+
+            >
+              {menuOptions.map((option, i) => (
+                <MenuItem
+                  key={option}
+                  component={Link}
+                  to={option.link}
+                  onClick={(event) => { handleMenuItemClick(event, i); setValue(1); handleClose() }}
+                  sx={menuItemStyles}
+                  selected={i === selectedIndex && value === 1}
+                >
+                  {option.name}
+
+                </MenuItem>
+              ))}
+            </Menu>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
