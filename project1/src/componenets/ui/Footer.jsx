@@ -91,7 +91,7 @@ const Footer = (props) => {
                         <Grid component={Link} to="/customsoftware" sx={classes.link}
                             onClick={() => { props.setValue(1); props.setSelectedIndex(1) }}>Custom Software Development</Grid>
                         <Grid component={Link} to="/mobileapps" sx={classes.link}
-                            onClick={() => { props.setValue(1); props.setSelectedIndex(2) }}>Mobile App Development</Grid>
+                            onClick={() => { props.setValue(1); props.setSelectedIndex(2) }}>iOs/Android App Development</Grid>
                         <Grid component={Link} to="/websites" sx={classes.link}
                             onClick={() => { props.setValue(1); props.setSelectedIndex(3) }}>Website Development</Grid>
                     </Grid>

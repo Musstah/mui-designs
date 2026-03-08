@@ -8,7 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(5);
 
   return (
     <ThemeProvider theme={theme}>
@@ -20,7 +20,15 @@ function App() {
           setSelectedIndex={setSelectedIndex}
         />
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route
+            path="/"
+            element={
+              <LandingPage
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            }
+          />
           <Route path="/services" element={<div>Services</div>} />
           <Route path="/customsoftware" element={<div>Customsoftware</div>} />
           <Route path="/mobileapps" element={<div>Mobileapps</div>} />
@@ -30,12 +38,7 @@ function App() {
           <Route path="/contact" element={<div>Contact</div>} />
           <Route path="/estimate" element={<div>Estimate</div>} />
         </Routes>
-        <Footer
-          value={value}
-          setValue={setValue}
-          selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
-        />
+        <Footer setValue={setValue} setSelectedIndex={setSelectedIndex} />
       </BrowserRouter>
     </ThemeProvider>
   );

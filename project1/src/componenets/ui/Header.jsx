@@ -134,7 +134,7 @@ export default function Header(props) {
       name: "Custom Software Development", link: "/customsoftware", activeIndex: 1,
       selectedIndex: 1
     },
-    { name: "Mobile app Development", link: "/mobileapps", activeIndex: 1, selectedIndex: 2 },
+    { name: "iOs/Android app Development", link: "/mobileapps", activeIndex: 1, selectedIndex: 2 },
     { name: "Website Development", link: "/websites", activeIndex: 1, selectedIndex: 3 },
   ]
 
@@ -161,6 +161,9 @@ export default function Header(props) {
             }
           }
           break;
+        case "/estimate":
+          props.setValue(5)
+
         default:
           break;
       }
@@ -193,14 +196,22 @@ export default function Header(props) {
           />
         ))}
       </Tabs>
-      <Button color="secondary" variant="contained"
+      <Button
+        component={Link} to="/estimate"
+        color="secondary"
+        variant="contained"
+        onClick={() => props.setValue(5)}
         sx={(theme) => ({
           ...theme.typography.estimate,
+          "&:hover": {
+            bgcolor: theme.palette.secondary.light
+          },
           borderRadius: '50px',
           ml: '50px',
           mr: '25px',
           height: '45px',
         })}
+
       >
         Free Estimate
       </Button>
