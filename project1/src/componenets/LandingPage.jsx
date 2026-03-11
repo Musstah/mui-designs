@@ -8,8 +8,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 
 import CallToAction from './ui/CallToAction';
@@ -164,7 +162,7 @@ const LandingPage = (props) => {
             {/* Hero Block */}
             <Grid item>
                 <Grid container justifyContent="flex-end" alignItems="center" direction="row">
-                    <Grid item sm={12} sx={classes.heroTextContainer}>
+                    <Grid item sm={12} md={6} sx={classes.heroTextContainer}>
                         <Typography variant='h2' align='center'>
                             Bringing West Coast Technology
                             <br />to the Midwest
@@ -191,7 +189,7 @@ const LandingPage = (props) => {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item sm={12} sx={classes.animation}>
+                    <Grid item sm={12} md={6} sx={classes.animation}>
                         <Lottie
                             options={defaultOptions}
                             height={"100%"}

@@ -71,6 +71,12 @@ export default createTheme({
             borderRadius: 50,
             fontFamily: "Roboto",
             fontWeight: "bold",
-        }
+        },
+        body1: {
+            fontSize: "1.25rem",
+            color: arcGrey,
+            fontWeight: 300
+        },
+
     }
 });

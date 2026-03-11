@@ -2,6 +2,8 @@ import theme from "./ui/Theme";
 import Header from "./ui/Header";
 import Footer from "./ui/Footer";
 import LandingPage from "./LandingPage";
+import Services from "./Services";
+import CustomSoftware from "./CustomSoftware";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import { ThemeProvider } from "@mui/material/styles";
@@ -29,8 +31,24 @@ function App() {
               />
             }
           />
-          <Route path="/services" element={<div>Services</div>} />
-          <Route path="/customsoftware" element={<div>Customsoftware</div>} />
+          <Route
+            path="/services"
+            element={
+              <Services
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            }
+          />
+          <Route
+            path="/customsoftware"
+            element={
+              <CustomSoftware
+                setValue={setValue}
+                setSelectedIndex={setSelectedIndex}
+              />
+            }
+          />
           <Route path="/mobileapps" element={<div>Mobileapps</div>} />
           <Route path="/websites" element={<div>Websites</div>} />
           <Route path="/revolution" element={<div>Revolution</div>} />
