@@ -18,7 +18,6 @@ import documentsAnimation from '../animations/documentsAnimation/data'
 import scaleAnimation from '../animations/scaleAnimation/data.json'
 import automationAnimation from '../animations/automationAnimation/data.json'
 import uxAnimation from '../animations/uxAnimation/data'
-import CallToAvtion from './ui/CallToAction'
 import CallToAction from "./ui/CallToAction";
 
 const classes = {
